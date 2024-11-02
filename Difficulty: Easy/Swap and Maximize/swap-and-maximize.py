@@ -1,15 +1,20 @@
 #User function Template for python3
 
 class Solution:
-    def maxSum(self,arr):
+    def maxSum(self, arr):
         arr.sort()
-        s=0
-        n=len(arr)
-        for i in range(n//2):
-            s+=arr[n-i-1]-arr[i]
-            s+=arr[n-i-1]-arr[i+1]
-        s+=arr[n//2]-arr[0]
-        return s
+        
+        res = 0
+        start = 0
+        end = len(arr) - 1
+        while start < end:
+            res += abs(arr[end] - arr[start]) + abs(arr[end] - arr[start + 1])
+            start += 1
+            end -= 1
+        
+        res += abs(arr[0] - arr[start])
+        return res
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
